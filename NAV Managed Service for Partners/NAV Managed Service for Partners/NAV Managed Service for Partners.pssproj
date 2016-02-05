@@ -26,10 +26,18 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Compile Include="Demo - How Do I Configure New NAV Management Portal Tenants using Web Services.ps1" />
-    <Compile Include="Managed Service.ps1" />
+    <Folder Include="How Do I Takeaways\" />
+    <Folder Include="How Do I Takeaways\3 Configure New NAV Management Portal Tenants using Web Services\" />
+    <Folder Include="How Do I Takeaways\5 Manage users using the Microsoft Dynamics NAV Management Portal WebServices API\" />
+    <Folder Include="Master\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="How Do I Takeaways\3 Configure New NAV Management Portal Tenants using Web Services\Demo.ps1" />
+    <Compile Include="How Do I Takeaways\3 Configure New NAV Management Portal Tenants using Web Services\Managed Service.ps1" />
+    <Compile Include="How Do I Takeaways\5 Manage users using the Microsoft Dynamics NAV Management Portal WebServices API\Demo.ps1" />
+    <Compile Include="How Do I Takeaways\5 Manage users using the Microsoft Dynamics NAV Management Portal WebServices API\Managed Service.ps1" />
+    <Compile Include="Master\Managed Service.ps1" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="Build" />
