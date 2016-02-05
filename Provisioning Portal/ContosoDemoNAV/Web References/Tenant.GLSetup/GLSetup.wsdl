@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="urn:microsoft-dynamics-schemas/page/glsetup" targetNamespace="urn:microsoft-dynamics-schemas/page/glsetup" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/page/glsetup" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:simpleType name="Local_Address_Format">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Post_Code_x002B_City" />
+          <xsd:enumeration value="City_x002B_Post_Code" />
+          <xsd:enumeration value="City_x002B_County_x002B_Post_Code" />
+          <xsd:enumeration value="Blank_Line_x002B_Post_Code_x002B_City" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Local_Cont_Addr_Format">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="First" />
+          <xsd:enumeration value="After_Company_Name" />
+          <xsd:enumeration value="Last" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Inv_Rounding_Type_LCY">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Nearest" />
+          <xsd:enumeration value="Up" />
+          <xsd:enumeration value="Down" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="VAT_Rounding_Type">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Nearest" />
+          <xsd:enumeration value="Up" />
+          <xsd:enumeration value="Down" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Bill_to_Sell_to_VAT_Calc">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Bill_to_Pay_to_No" />
+          <xsd:enumeration value="Sell_to_Buy_from_No" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="VAT_Exchange_Rate_Adjustment">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="No_Adjustment" />
+          <xsd:enumeration value="Adjust_Amount" />
+          <xsd:enumeration value="Adjust_Additional_Currency_Amount" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Pmt_Disc_Tolerance_Posting">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Payment_Tolerance_Accounts" />
+          <xsd:enumeration value="Payment_Discount_Accounts" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Payment_Tolerance_Posting">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Payment_Tolerance_Accounts" />
+          <xsd:enumeration value="Payment_Discount_Accounts" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="GLSetup">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Key" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Allow_Posting_From" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Allow_Posting_To" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Register_Time" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Local_Address_Format" type="tns:Local_Address_Format" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Local_Cont_Addr_Format" type="tns:Local_Cont_Addr_Format" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Inv_Rounding_Precision_LCY" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Inv_Rounding_Type_LCY" type="tns:Inv_Rounding_Type_LCY" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Allow_G_L_Acc_Deletion_Before" type="xsd:date" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Check_G_L_Account_Usage" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="EMU_Currency" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="LCY_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Pmt_Disc_Excl_VAT" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Adjust_for_Payment_Disc" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Unrealized_VAT" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Prepayment_Unrealized_VAT" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Max_VAT_Difference_Allowed" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="VAT_Rounding_Type" type="tns:VAT_Rounding_Type" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Bill_to_Sell_to_VAT_Calc" type="tns:Bill_to_Sell_to_VAT_Calc" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Print_VAT_specification_in_LCY" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Use_Legacy_G_L_Entry_Locking" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Bank_Account_Nos" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Global_Dimension_1_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Global_Dimension_2_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Shortcut_Dimension_1_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Shortcut_Dimension_2_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Shortcut_Dimension_3_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Shortcut_Dimension_4_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Shortcut_Dimension_5_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Shortcut_Dimension_6_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Shortcut_Dimension_7_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Shortcut_Dimension_8_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Additional_Reporting_Currency" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="VAT_Exchange_Rate_Adjustment" type="tns:VAT_Exchange_Rate_Adjustment" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="VAT_Reg_No_Validation_URL" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Appln_Rounding_Precision" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Pmt_Disc_Tolerance_Warning" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Pmt_Disc_Tolerance_Posting" type="tns:Pmt_Disc_Tolerance_Posting" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Payment_Discount_Grace_Period" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Payment_Tolerance_Warning" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Payment_Tolerance_Posting" type="tns:Payment_Tolerance_Posting" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Payment_Tolerance_Percent" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Max_Payment_Tolerance_Amount" type="xsd:decimal" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Payroll_Trans_Import_Format" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="GLSetup_List">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="GLSetup" type="tns:GLSetup" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="GLSetup_Fields">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Allow_Posting_From" />
+          <xsd:enumeration value="Allow_Posting_To" />
+          <xsd:enumeration value="Register_Time" />
+          <xsd:enumeration value="Local_Address_Format" />
+          <xsd:enumeration value="Local_Cont_Addr_Format" />
+          <xsd:enumeration value="Inv_Rounding_Precision_LCY" />
+          <xsd:enumeration value="Inv_Rounding_Type_LCY" />
+          <xsd:enumeration value="Allow_G_L_Acc_Deletion_Before" />
+          <xsd:enumeration value="Check_G_L_Account_Usage" />
+          <xsd:enumeration value="EMU_Currency" />
+          <xsd:enumeration value="LCY_Code" />
+          <xsd:enumeration value="Pmt_Disc_Excl_VAT" />
+          <xsd:enumeration value="Adjust_for_Payment_Disc" />
+          <xsd:enumeration value="Unrealized_VAT" />
+          <xsd:enumeration value="Prepayment_Unrealized_VAT" />
+          <xsd:enumeration value="Max_VAT_Difference_Allowed" />
+          <xsd:enumeration value="VAT_Rounding_Type" />
+          <xsd:enumeration value="Bill_to_Sell_to_VAT_Calc" />
+          <xsd:enumeration value="Print_VAT_specification_in_LCY" />
+          <xsd:enumeration value="Use_Legacy_G_L_Entry_Locking" />
+          <xsd:enumeration value="Bank_Account_Nos" />
+          <xsd:enumeration value="Global_Dimension_1_Code" />
+          <xsd:enumeration value="Global_Dimension_2_Code" />
+          <xsd:enumeration value="Shortcut_Dimension_1_Code" />
+          <xsd:enumeration value="Shortcut_Dimension_2_Code" />
+          <xsd:enumeration value="Shortcut_Dimension_3_Code" />
+          <xsd:enumeration value="Shortcut_Dimension_4_Code" />
+          <xsd:enumeration value="Shortcut_Dimension_5_Code" />
+          <xsd:enumeration value="Shortcut_Dimension_6_Code" />
+          <xsd:enumeration value="Shortcut_Dimension_7_Code" />
+          <xsd:enumeration value="Shortcut_Dimension_8_Code" />
+          <xsd:enumeration value="Additional_Reporting_Currency" />
+          <xsd:enumeration value="VAT_Exchange_Rate_Adjustment" />
+          <xsd:enumeration value="VAT_Reg_No_Validation_URL" />
+          <xsd:enumeration value="Appln_Rounding_Precision" />
+          <xsd:enumeration value="Pmt_Disc_Tolerance_Warning" />
+          <xsd:enumeration value="Pmt_Disc_Tolerance_Posting" />
+          <xsd:enumeration value="Payment_Discount_Grace_Period" />
+          <xsd:enumeration value="Payment_Tolerance_Warning" />
+          <xsd:enumeration value="Payment_Tolerance_Posting" />
+          <xsd:enumeration value="Payment_Tolerance_Percent" />
+          <xsd:enumeration value="Max_Payment_Tolerance_Amount" />
+          <xsd:enumeration value="Payroll_Trans_Import_Format" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="GLSetup_Filter">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="Field" type="tns:GLSetup_Fields" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="Criteria" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ReadByRecId">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="recId" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReadByRecId_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="GLSetup" type="tns:GLSetup" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReadMultiple">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="unbounded" name="filter" type="tns:GLSetup_Filter" />
+            <xsd:element minOccurs="0" maxOccurs="1" name="bookmarkKey" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="setSize" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReadMultiple_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="ReadMultiple_Result" type="tns:GLSetup_List" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="IsUpdated">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="IsUpdated_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="IsUpdated_Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetRecIdFromKey">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetRecIdFromKey_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="GetRecIdFromKey_Result" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Update">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="GLSetup" type="tns:GLSetup" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Update_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="GLSetup" type="tns:GLSetup" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UpdateMultiple">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="GLSetup_List" type="tns:GLSetup_List" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UpdateMultiple_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="GLSetup_List" type="tns:GLSetup_List" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+  <message name="ReadByRecId">
+    <part name="parameters" element="tns:ReadByRecId" />
+  </message>
+  <message name="ReadByRecId_Result">
+    <part name="parameters" element="tns:ReadByRecId_Result" />
+  </message>
+  <message name="ReadMultiple">
+    <part name="parameters" element="tns:ReadMultiple" />
+  </message>
+  <message name="ReadMultiple_Result">
+    <part name="parameters" element="tns:ReadMultiple_Result" />
+  </message>
+  <message name="IsUpdated">
+    <part name="parameters" element="tns:IsUpdated" />
+  </message>
+  <message name="IsUpdated_Result">
+    <part name="parameters" element="tns:IsUpdated_Result" />
+  </message>
+  <message name="GetRecIdFromKey">
+    <part name="parameters" element="tns:GetRecIdFromKey" />
+  </message>
+  <message name="GetRecIdFromKey_Result">
+    <part name="parameters" element="tns:GetRecIdFromKey_Result" />
+  </message>
+  <message name="Update">
+    <part name="parameters" element="tns:Update" />
+  </message>
+  <message name="Update_Result">
+    <part name="parameters" element="tns:Update_Result" />
+  </message>
+  <message name="UpdateMultiple">
+    <part name="parameters" element="tns:UpdateMultiple" />
+  </message>
+  <message name="UpdateMultiple_Result">
+    <part name="parameters" element="tns:UpdateMultiple_Result" />
+  </message>
+  <portType name="GLSetup_Port">
+    <operation name="ReadByRecId">
+      <input name="ReadByRecId" message="tns:ReadByRecId" />
+      <output name="ReadByRecId_Result" message="tns:ReadByRecId_Result" />
+    </operation>
+    <operation name="ReadMultiple">
+      <input name="ReadMultiple" message="tns:ReadMultiple" />
+      <output name="ReadMultiple_Result" message="tns:ReadMultiple_Result" />
+    </operation>
+    <operation name="IsUpdated">
+      <input name="IsUpdated" message="tns:IsUpdated" />
+      <output name="IsUpdated_Result" message="tns:IsUpdated_Result" />
+    </operation>
+    <operation name="GetRecIdFromKey">
+      <input name="GetRecIdFromKey" message="tns:GetRecIdFromKey" />
+      <output name="GetRecIdFromKey_Result" message="tns:GetRecIdFromKey_Result" />
+    </operation>
+    <operation name="Update">
+      <input name="Update" message="tns:Update" />
+      <output name="Update_Result" message="tns:Update_Result" />
+    </operation>
+    <operation name="UpdateMultiple">
+      <input name="UpdateMultiple" message="tns:UpdateMultiple" />
+      <output name="UpdateMultiple_Result" message="tns:UpdateMultiple_Result" />
+    </operation>
+  </portType>
+  <binding name="GLSetup_Binding" type="tns:GLSetup_Port">
+    <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <operation name="ReadByRecId">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/glsetup:ReadByRecId" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ReadByRecId">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ReadByRecId_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ReadMultiple">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/glsetup:ReadMultiple" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ReadMultiple">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ReadMultiple_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="IsUpdated">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/glsetup:IsUpdated" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="IsUpdated">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="IsUpdated_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetRecIdFromKey">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/glsetup:GetRecIdFromKey" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetRecIdFromKey">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetRecIdFromKey_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Update">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/glsetup:Update" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Update">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Update_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="UpdateMultiple">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/glsetup:UpdateMultiple" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="UpdateMultiple">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="UpdateMultiple_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="GLSetup_Service">
+    <port name="GLSetup_Port" binding="tns:GLSetup_Binding">
+      <address location="https://managementtenant-v19m56.navcloudapptest.net:7047/NAV/WS/CRONUS%20International%20Ltd./Page/GLSetup" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </port>
+  </service>
+</definitions>

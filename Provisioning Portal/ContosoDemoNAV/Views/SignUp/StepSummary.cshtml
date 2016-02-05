@@ -1,0 +1,26 @@
+﻿@model ContosoDemoNAV.Models.ProvisioningModel
+
+<fieldset>
+    <legend>Nearly there...</legend>
+    <p>
+        We have all the information we need to start your own 30-day trial of Contoso Family Farming Cloud - Powered by Microsoft Dynamics NAV. Make sure the information
+        below is correct, click Back if you need to correct something, and click Complete if you are ready to go.<br/>
+        <br/>
+        Tenant name: @Model.Tenant.TenantName<br/>
+        <br/>
+        Company name: @Model.Tenant.CompanyName<br/>
+        VAT registration number: @Model.Features.VatRegistrationNumber<br/>
+        <br/>
+        Address: @Model.Features.CompanyAddress<br/>
+        Post code: @Model.Features.CompanyPostCode<br/>
+        City: @Model.Features.CompanyCity<br/>
+        Country: @Model.Tenant.Country<br/>
+        <br/>
+        Local currency code: @Model.Features.LocalCurrencyCode<br />
+        Register user time: @Model.Features.RegisterTime<br />
+        <br/>
+        Administrator username: @Model.User.UserName<br/>
+        Administrator full name: @Model.User.FullName<br/>
+        Administrator e-mail: @Model.User.ContactEmail<br/>
+    </p>
+</fieldset>

@@ -1,0 +1,76 @@
+﻿@model ContosoDemoNAV.Models.NewUserModel
+
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts {
+    <script type="text/javascript">
+        var selectedPermissionSets = [];
+        $(function() {
+            var sets = @Html.Raw(Json.Encode(Model.PermissionSets));
+            $.each(sets, function(i, set) {
+                $(".permissionsets").append("<div title='" + set.Name + "'>" + set.Code + "</div>");
+            });
+            $(".permissionsets div").click(function(e) {
+                var s = $(e.target);
+                s.toggleClass("selected");
+                s.hasClass("selected") ? selectedPermissionSets.push(s.text()) : selectedPermissionSets.splice(selectedPermissionSets.indexOf(s.text()), 1);
+            });
+            $("form#new").submit(function() {
+                $("#selectedPermissionSets").val(JSON.stringify(selectedPermissionSets));
+            });
+        });
+    </script>
+}
+
+<h2>New user account</h2>
+<p>Please, use the form below to enter new user account information, then click Create.</p>
+<br />
+@using (Html.BeginForm("Create", "Users", FormMethod.Post, new {@class = "form-horizontal", @id = "new" }))
+{
+    <fieldset>
+        <legend>Account information</legend>
+        @Html.HiddenFor(h => h.SelectedPermissionSets, new { @id = "selectedPermissionSets" })
+        <div class="form-group">
+            @Html.LabelFor(l => l.User.UserName, new {@class = "control-label col-sm-2"})
+            <div class="col-sm-10">
+                @Html.TextBoxFor(t => t.User.UserName, new {@class = "form-control"})
+                @Html.ValidationMessageFor(v => v.User.UserName, null, new {@class = "help-block"})
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(l => l.User.FullName, new {@class = "control-label col-sm-2"})
+            <div class="col-sm-10">
+                @Html.TextBoxFor(t => t.User.FullName, new {@class = "form-control"})
+                @Html.ValidationMessageFor(v => v.User.FullName, null, new {@class = "help-block"})
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(l => l.User.ContactEmail, new {@class = "control-label col-sm-2"})
+            <div class="col-sm-10">
+                @Html.TextBoxFor(t => t.User.ContactEmail, new {@class = "form-control", @type = "email"})
+                @Html.ValidationMessageFor(v => v.User.ContactEmail, null, new {@class = "help-block"})
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(l => l.User.Company, new { @class = "control-label col-sm-2" })
+            <div class="col-sm-10">
+                @Html.DropDownListFor(l => l.User.Company, Model.Tenant.Companies.Select(c => new SelectListItem { Text = string.IsNullOrWhiteSpace(c) ? "All companies" : c, Value = c }), "All companies", new { @class = "form-control" })
+            </div>
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>Permission sets</legend>
+        <p>Permission sets define which actions are available to users. Please select all permission sets from the box below, that apply to your new user.</p>
+        <div class="permissionsets"></div>
+    </fieldset>
+    <fieldset id="buttons">
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" id="button-next" class="btn btn-default">Create</button>
+            </div>
+        </div>
+    </fieldset>
+}

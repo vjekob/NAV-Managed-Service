@@ -1,0 +1,77 @@
+﻿<fieldset>
+    <legend>Choose your offering</legend>
+    <p>
+        Please enter the information about the user that will have administrative rights for the new Microsoft Dynamics NAV tenant. This user will also have full access to your Microsoft Dynamics NAV data and processes.
+    </p>
+</fieldset>
+
+<div class="pricing-table group">
+    <div class="block personal fl">
+        <h2 class="title">Simple</h2>
+        <div class="content">
+            <p class="price">
+                <sup>$</sup>
+                <span>79</span>
+                <sub>/mo.</sub>
+            </p>
+            <p class="hint">Perfect for small farms</p>
+        </div>
+        <ul class="features">
+            <li><span class="fontawesome-user"></span>1 user</li>
+            <li><span class="fontawesome-star"></span>Web Access</li>
+            <li><span class="fontawesome-file"></span>Simple Feature Set</li>
+            <li><span class="fontawesome-cloud"></span>2GB Database Size</li>
+        </ul>
+        <div class="pt-footer">
+            <p>Select Plan</p>
+        </div>
+    </div>
+    <div class="block professional fl">
+        <h2 class="title">Standard</h2>
+        <div class="content">
+            <p class="price">
+                <sup>$</sup>
+                <span>449</span>
+                <sub>/mo.</sub>
+            </p>
+            <p class="hint">Suitable for medium farms</p>
+        </div>
+        <ul class="features">
+            <li><span class="fontawesome-user"></span>up to 5 users</li>
+            <li><span class="fontawesome-star"></span>Web Access</li>
+            <li><span class="fontawesome-file"></span>Advanced Feature Set</li>
+            <li><span class="fontawesome-cloud"></span>20GB Database Size</li>
+        </ul>
+        <div class="pt-footer">
+            <p>Select Plan</p>
+        </div>
+    </div>
+    <div class="block business fl">
+        <h2 class="title">Premium</h2>
+        <div class="content">
+            <p class="price">
+                <sup>$</sup>
+                <span>999</span>
+                <sub>/mo.</sub>
+            </p>
+            <p class="hint">For established business</p>
+        </div>
+        <ul class="features">
+            <li><span class="fontawesome-user"></span>up to 15 users</li>
+            <li><span class="fontawesome-star"></span>Web Access</li>
+            <li><span class="fontawesome-file"></span>Premium Feature Set</li>
+            <li><span class="fontawesome-cloud"></span>200GB Database Size</li>
+        </ul>
+        <div class="pt-footer">
+            <p>Select Plan</p>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#buttons").css("display", "none");
+        $(".block").click(function() {
+            $("form").submit();
+        });
+    });
+</script>

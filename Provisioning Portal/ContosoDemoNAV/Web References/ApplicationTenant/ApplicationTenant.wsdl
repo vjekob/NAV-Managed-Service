@@ -1,0 +1,823 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="urn:microsoft-dynamics-schemas/page/applicationtenant" targetNamespace="urn:microsoft-dynamics-schemas/page/applicationtenant" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/page/applicationtenant" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:simpleType name="Provisioning_Status">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Draft" />
+          <xsd:enumeration value="Provisioning" />
+          <xsd:enumeration value="Active" />
+          <xsd:enumeration value="Deprovisioning" />
+          <xsd:enumeration value="Deprovisioned" />
+          <xsd:enumeration value="Provisioning_Failed" />
+          <xsd:enumeration value="Deprovisioning_Failed" />
+          <xsd:enumeration value="Moving" />
+          <xsd:enumeration value="Deleting" />
+          <xsd:enumeration value="Stopping" />
+          <xsd:enumeration value="Stopped" />
+          <xsd:enumeration value="Starting" />
+          <xsd:enumeration value="Deleting_Failed" />
+          <xsd:enumeration value="Failed" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Application_Service_Status">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Draft" />
+          <xsd:enumeration value="Provisioning" />
+          <xsd:enumeration value="Provisioning_Failed" />
+          <xsd:enumeration value="Deprovisioning" />
+          <xsd:enumeration value="Deprovisioned" />
+          <xsd:enumeration value="Deprovisioning_Failed" />
+          <xsd:enumeration value="Stopped" />
+          <xsd:enumeration value="Running" />
+          <xsd:enumeration value="Starting" />
+          <xsd:enumeration value="Stopping" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="License_Type">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Full_User" />
+          <xsd:enumeration value="Limited_User" />
+          <xsd:enumeration value="Device_Only_User" />
+          <xsd:enumeration value="Windows_Group" />
+          <xsd:enumeration value="External_User" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Status">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Enabled" />
+          <xsd:enumeration value="Disabled" />
+          <xsd:enumeration value="Draft" />
+          <xsd:enumeration value="Provisioning" />
+          <xsd:enumeration value="Provisioning_Failed" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="App_Tenant_Subpage_Users">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Key" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="User_Name" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Full_Name" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Administrator" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Authentication_Email" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Contact_Email" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="License_Type" type="tns:License_Type" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Status" type="tns:Status" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Active_Sessions" type="xsd:int" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Partner_User" type="xsd:boolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="App_Tenant_Subpage_Users_List">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="App_Tenant_Subpage_Users" type="tns:App_Tenant_Subpage_Users" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="App_Tenant_Subpage_Companies">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Key" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Name" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="App_Tenant_Subpage_Companies_List">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="App_Tenant_Subpage_Companies" type="tns:App_Tenant_Subpage_Companies" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ApplicationTenant">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Key" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ApplicationServiceName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Name" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Country" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Provisioning_Status" type="tns:Provisioning_Status" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Provisioned_On" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Tag" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Application_Service_Name_Web_Service_Filter_Field" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Application_Service_Status" type="tns:Application_Service_Status" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ID" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ApplicationTenantDataFileName" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Subdomain_Prefix" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Custom_Domain_Name" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Default_Domain_Name" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="URL" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Allow_App_Database_Write" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Table_Connection_Name" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Users" type="tns:App_Tenant_Subpage_Users_List" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="App_Tenant_Subpage_Companies" type="tns:App_Tenant_Subpage_Companies_List" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ApplicationTenant_List">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="ApplicationTenant" type="tns:ApplicationTenant" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="ApplicationTenant_Fields">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="ApplicationServiceName" />
+          <xsd:enumeration value="Name" />
+          <xsd:enumeration value="Country" />
+          <xsd:enumeration value="Provisioning_Status" />
+          <xsd:enumeration value="Provisioned_On" />
+          <xsd:enumeration value="Tag" />
+          <xsd:enumeration value="Application_Service_Name_Web_Service_Filter_Field" />
+          <xsd:enumeration value="Application_Service_Status" />
+          <xsd:enumeration value="ID" />
+          <xsd:enumeration value="ApplicationTenantDataFileName" />
+          <xsd:enumeration value="Subdomain_Prefix" />
+          <xsd:enumeration value="Custom_Domain_Name" />
+          <xsd:enumeration value="Default_Domain_Name" />
+          <xsd:enumeration value="URL" />
+          <xsd:enumeration value="Allow_App_Database_Write" />
+          <xsd:enumeration value="Table_Connection_Name" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="ApplicationTenant_Filter">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="Field" type="tns:ApplicationTenant_Fields" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="Criteria" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="Read">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="ID" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Read_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="ApplicationTenant" type="tns:ApplicationTenant" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReadByRecId">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="recId" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReadByRecId_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="ApplicationTenant" type="tns:ApplicationTenant" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReadMultiple">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="unbounded" name="filter" type="tns:ApplicationTenant_Filter" />
+            <xsd:element minOccurs="0" maxOccurs="1" name="bookmarkKey" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="setSize" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReadMultiple_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="ReadMultiple_Result" type="tns:ApplicationTenant_List" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="IsUpdated">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="IsUpdated_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="IsUpdated_Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetRecIdFromKey">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetRecIdFromKey_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="GetRecIdFromKey_Result" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Create">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="ApplicationTenant" type="tns:ApplicationTenant" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Create_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="ApplicationTenant" type="tns:ApplicationTenant" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CreateMultiple">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="ApplicationTenant_List" type="tns:ApplicationTenant_List" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CreateMultiple_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="ApplicationTenant_List" type="tns:ApplicationTenant_List" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Update">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="ApplicationTenant" type="tns:ApplicationTenant" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Update_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="ApplicationTenant" type="tns:ApplicationTenant" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UpdateMultiple">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="ApplicationTenant_List" type="tns:ApplicationTenant_List" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UpdateMultiple_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="ApplicationTenant_List" type="tns:ApplicationTenant_List" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Delete_Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="BeginProvision">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="applicationTenant" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="BeginProvision_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="return_value" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="BeginDeprovision">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="applicationTenant" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="BeginDeprovision_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="return_value" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetTenantUrl">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="applicationTenant" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetTenantUrl_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="return_value" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="BeginMove">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="applicationTenant" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="destinationServiceName" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="BeginMove_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="return_value" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="BeginCopy">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="applicationTenant" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="destinationServiceName" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="copyName" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="customSubdomainPrefix" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="allowAppDatabaseWrite" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="BeginCopy_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="return_value" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="BeginPointInTimeCopy">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="applicationTenant" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="destinationServiceName" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="copyName" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="customSubdomainPrefix" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="allowAppDatabaseWrite" type="xsd:boolean" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="pointInTime" type="xsd:dateTime" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="BeginPointInTimeCopy_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="return_value" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="BeginBackUp">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="applicationTenant" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="BeginBackUp_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="return_value" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="BeginDeleteTenantAndDependentResources">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="applicationTenant" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="BeginDeleteTenantAndDependentResources_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="return_value" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_Users">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Users_Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_Users_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Delete_Users_Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_App_Tenant_Subpage_Companies">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="App_Tenant_Subpage_Companies_Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Delete_App_Tenant_Subpage_Companies_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Delete_App_Tenant_Subpage_Companies_Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+  <message name="Read">
+    <part name="parameters" element="tns:Read" />
+  </message>
+  <message name="Read_Result">
+    <part name="parameters" element="tns:Read_Result" />
+  </message>
+  <message name="ReadByRecId">
+    <part name="parameters" element="tns:ReadByRecId" />
+  </message>
+  <message name="ReadByRecId_Result">
+    <part name="parameters" element="tns:ReadByRecId_Result" />
+  </message>
+  <message name="ReadMultiple">
+    <part name="parameters" element="tns:ReadMultiple" />
+  </message>
+  <message name="ReadMultiple_Result">
+    <part name="parameters" element="tns:ReadMultiple_Result" />
+  </message>
+  <message name="IsUpdated">
+    <part name="parameters" element="tns:IsUpdated" />
+  </message>
+  <message name="IsUpdated_Result">
+    <part name="parameters" element="tns:IsUpdated_Result" />
+  </message>
+  <message name="GetRecIdFromKey">
+    <part name="parameters" element="tns:GetRecIdFromKey" />
+  </message>
+  <message name="GetRecIdFromKey_Result">
+    <part name="parameters" element="tns:GetRecIdFromKey_Result" />
+  </message>
+  <message name="Create">
+    <part name="parameters" element="tns:Create" />
+  </message>
+  <message name="Create_Result">
+    <part name="parameters" element="tns:Create_Result" />
+  </message>
+  <message name="CreateMultiple">
+    <part name="parameters" element="tns:CreateMultiple" />
+  </message>
+  <message name="CreateMultiple_Result">
+    <part name="parameters" element="tns:CreateMultiple_Result" />
+  </message>
+  <message name="Update">
+    <part name="parameters" element="tns:Update" />
+  </message>
+  <message name="Update_Result">
+    <part name="parameters" element="tns:Update_Result" />
+  </message>
+  <message name="UpdateMultiple">
+    <part name="parameters" element="tns:UpdateMultiple" />
+  </message>
+  <message name="UpdateMultiple_Result">
+    <part name="parameters" element="tns:UpdateMultiple_Result" />
+  </message>
+  <message name="Delete">
+    <part name="parameters" element="tns:Delete" />
+  </message>
+  <message name="Delete_Result">
+    <part name="parameters" element="tns:Delete_Result" />
+  </message>
+  <message name="BeginProvision">
+    <part name="parameters" element="tns:BeginProvision" />
+  </message>
+  <message name="BeginProvision_Result">
+    <part name="parameters" element="tns:BeginProvision_Result" />
+  </message>
+  <message name="BeginDeprovision">
+    <part name="parameters" element="tns:BeginDeprovision" />
+  </message>
+  <message name="BeginDeprovision_Result">
+    <part name="parameters" element="tns:BeginDeprovision_Result" />
+  </message>
+  <message name="GetTenantUrl">
+    <part name="parameters" element="tns:GetTenantUrl" />
+  </message>
+  <message name="GetTenantUrl_Result">
+    <part name="parameters" element="tns:GetTenantUrl_Result" />
+  </message>
+  <message name="BeginMove">
+    <part name="parameters" element="tns:BeginMove" />
+  </message>
+  <message name="BeginMove_Result">
+    <part name="parameters" element="tns:BeginMove_Result" />
+  </message>
+  <message name="BeginCopy">
+    <part name="parameters" element="tns:BeginCopy" />
+  </message>
+  <message name="BeginCopy_Result">
+    <part name="parameters" element="tns:BeginCopy_Result" />
+  </message>
+  <message name="BeginPointInTimeCopy">
+    <part name="parameters" element="tns:BeginPointInTimeCopy" />
+  </message>
+  <message name="BeginPointInTimeCopy_Result">
+    <part name="parameters" element="tns:BeginPointInTimeCopy_Result" />
+  </message>
+  <message name="BeginBackUp">
+    <part name="parameters" element="tns:BeginBackUp" />
+  </message>
+  <message name="BeginBackUp_Result">
+    <part name="parameters" element="tns:BeginBackUp_Result" />
+  </message>
+  <message name="BeginDeleteTenantAndDependentResources">
+    <part name="parameters" element="tns:BeginDeleteTenantAndDependentResources" />
+  </message>
+  <message name="BeginDeleteTenantAndDependentResources_Result">
+    <part name="parameters" element="tns:BeginDeleteTenantAndDependentResources_Result" />
+  </message>
+  <message name="Delete_Users">
+    <part name="parameters" element="tns:Delete_Users" />
+  </message>
+  <message name="Delete_Users_Result">
+    <part name="parameters" element="tns:Delete_Users_Result" />
+  </message>
+  <message name="Delete_App_Tenant_Subpage_Companies">
+    <part name="parameters" element="tns:Delete_App_Tenant_Subpage_Companies" />
+  </message>
+  <message name="Delete_App_Tenant_Subpage_Companies_Result">
+    <part name="parameters" element="tns:Delete_App_Tenant_Subpage_Companies_Result" />
+  </message>
+  <portType name="ApplicationTenant_Port">
+    <operation name="Read">
+      <input name="Read" message="tns:Read" />
+      <output name="Read_Result" message="tns:Read_Result" />
+    </operation>
+    <operation name="ReadByRecId">
+      <input name="ReadByRecId" message="tns:ReadByRecId" />
+      <output name="ReadByRecId_Result" message="tns:ReadByRecId_Result" />
+    </operation>
+    <operation name="ReadMultiple">
+      <input name="ReadMultiple" message="tns:ReadMultiple" />
+      <output name="ReadMultiple_Result" message="tns:ReadMultiple_Result" />
+    </operation>
+    <operation name="IsUpdated">
+      <input name="IsUpdated" message="tns:IsUpdated" />
+      <output name="IsUpdated_Result" message="tns:IsUpdated_Result" />
+    </operation>
+    <operation name="GetRecIdFromKey">
+      <input name="GetRecIdFromKey" message="tns:GetRecIdFromKey" />
+      <output name="GetRecIdFromKey_Result" message="tns:GetRecIdFromKey_Result" />
+    </operation>
+    <operation name="Create">
+      <input name="Create" message="tns:Create" />
+      <output name="Create_Result" message="tns:Create_Result" />
+    </operation>
+    <operation name="CreateMultiple">
+      <input name="CreateMultiple" message="tns:CreateMultiple" />
+      <output name="CreateMultiple_Result" message="tns:CreateMultiple_Result" />
+    </operation>
+    <operation name="Update">
+      <input name="Update" message="tns:Update" />
+      <output name="Update_Result" message="tns:Update_Result" />
+    </operation>
+    <operation name="UpdateMultiple">
+      <input name="UpdateMultiple" message="tns:UpdateMultiple" />
+      <output name="UpdateMultiple_Result" message="tns:UpdateMultiple_Result" />
+    </operation>
+    <operation name="Delete">
+      <input name="Delete" message="tns:Delete" />
+      <output name="Delete_Result" message="tns:Delete_Result" />
+    </operation>
+    <operation name="BeginProvision">
+      <input name="BeginProvision" message="tns:BeginProvision" />
+      <output name="BeginProvision_Result" message="tns:BeginProvision_Result" />
+    </operation>
+    <operation name="BeginDeprovision">
+      <input name="BeginDeprovision" message="tns:BeginDeprovision" />
+      <output name="BeginDeprovision_Result" message="tns:BeginDeprovision_Result" />
+    </operation>
+    <operation name="GetTenantUrl">
+      <input name="GetTenantUrl" message="tns:GetTenantUrl" />
+      <output name="GetTenantUrl_Result" message="tns:GetTenantUrl_Result" />
+    </operation>
+    <operation name="BeginMove">
+      <input name="BeginMove" message="tns:BeginMove" />
+      <output name="BeginMove_Result" message="tns:BeginMove_Result" />
+    </operation>
+    <operation name="BeginCopy">
+      <input name="BeginCopy" message="tns:BeginCopy" />
+      <output name="BeginCopy_Result" message="tns:BeginCopy_Result" />
+    </operation>
+    <operation name="BeginPointInTimeCopy">
+      <input name="BeginPointInTimeCopy" message="tns:BeginPointInTimeCopy" />
+      <output name="BeginPointInTimeCopy_Result" message="tns:BeginPointInTimeCopy_Result" />
+    </operation>
+    <operation name="BeginBackUp">
+      <input name="BeginBackUp" message="tns:BeginBackUp" />
+      <output name="BeginBackUp_Result" message="tns:BeginBackUp_Result" />
+    </operation>
+    <operation name="BeginDeleteTenantAndDependentResources">
+      <input name="BeginDeleteTenantAndDependentResources" message="tns:BeginDeleteTenantAndDependentResources" />
+      <output name="BeginDeleteTenantAndDependentResources_Result" message="tns:BeginDeleteTenantAndDependentResources_Result" />
+    </operation>
+    <operation name="Delete_Users">
+      <input name="Delete_Users" message="tns:Delete_Users" />
+      <output name="Delete_Users_Result" message="tns:Delete_Users_Result" />
+    </operation>
+    <operation name="Delete_App_Tenant_Subpage_Companies">
+      <input name="Delete_App_Tenant_Subpage_Companies" message="tns:Delete_App_Tenant_Subpage_Companies" />
+      <output name="Delete_App_Tenant_Subpage_Companies_Result" message="tns:Delete_App_Tenant_Subpage_Companies_Result" />
+    </operation>
+  </portType>
+  <binding name="ApplicationTenant_Binding" type="tns:ApplicationTenant_Port">
+    <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <operation name="Read">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/applicationtenant:Read" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Read">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Read_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ReadByRecId">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/applicationtenant:ReadByRecId" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ReadByRecId">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ReadByRecId_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ReadMultiple">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/applicationtenant:ReadMultiple" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ReadMultiple">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ReadMultiple_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="IsUpdated">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/applicationtenant:IsUpdated" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="IsUpdated">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="IsUpdated_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetRecIdFromKey">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/applicationtenant:GetRecIdFromKey" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetRecIdFromKey">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetRecIdFromKey_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Create">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/applicationtenant:Create" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Create">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Create_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateMultiple">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/applicationtenant:CreateMultiple" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateMultiple">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateMultiple_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Update">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/applicationtenant:Update" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Update">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Update_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="UpdateMultiple">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/applicationtenant:UpdateMultiple" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="UpdateMultiple">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="UpdateMultiple_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Delete">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/applicationtenant:Delete" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Delete">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Delete_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="BeginProvision">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/applicationtenant:BeginProvision" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="BeginProvision">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="BeginProvision_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="BeginDeprovision">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/applicationtenant:BeginDeprovision" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="BeginDeprovision">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="BeginDeprovision_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetTenantUrl">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/applicationtenant:GetTenantUrl" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetTenantUrl">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetTenantUrl_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="BeginMove">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/applicationtenant:BeginMove" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="BeginMove">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="BeginMove_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="BeginCopy">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/applicationtenant:BeginCopy" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="BeginCopy">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="BeginCopy_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="BeginPointInTimeCopy">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/applicationtenant:BeginPointInTimeCopy" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="BeginPointInTimeCopy">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="BeginPointInTimeCopy_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="BeginBackUp">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/applicationtenant:BeginBackUp" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="BeginBackUp">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="BeginBackUp_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="BeginDeleteTenantAndDependentResources">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/applicationtenant:BeginDeleteTenantAndDependentResources" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="BeginDeleteTenantAndDependentResources">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="BeginDeleteTenantAndDependentResources_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Delete_Users">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/applicationtenant:Delete_Users" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Delete_Users">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Delete_Users_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Delete_App_Tenant_Subpage_Companies">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/applicationtenant:Delete_App_Tenant_Subpage_Companies" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Delete_App_Tenant_Subpage_Companies">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Delete_App_Tenant_Subpage_Companies_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ApplicationTenant_Service">
+    <port name="ApplicationTenant_Port" binding="tns:ApplicationTenant_Binding">
+      <address location="https://navmanagementportal.navcloudapptest.net:7047/NAV/WS/MVCompany/Page/ApplicationTenant?tenant=mvp" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </port>
+  </service>
+</definitions>

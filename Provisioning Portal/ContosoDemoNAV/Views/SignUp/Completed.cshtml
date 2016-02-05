@@ -1,0 +1,22 @@
+﻿@model ContosoDemoNAV.Models.ProvisioningModel
+@{
+    ViewBag.Title = "Completed";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Welcome to Contoso Family Farming Cloud!</h2>
+<p>
+    Congratulations! Your own instance of Contoso Family Farming Cloud - Powered by Microsoft Dynamics NAV is ready for you.
+</p>
+<p>
+    To sign in to Microsoft Dynamics NAV, use the following credentials:<br/>
+    <br/>
+    Web client: <a href="@Model.Tenant.Url" target="_blank">@Model.Tenant.Url</a><br/>
+    <br/>
+    User name: @Model.User.UserName<br/>
+    Password: @Model.User.Password<br/>
+</p>
+<p>
+    To access Microsoft Dynamics NAV, click on the link below:<br/>
+</p>
+

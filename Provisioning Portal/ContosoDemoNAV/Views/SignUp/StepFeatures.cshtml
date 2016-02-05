@@ -1,0 +1,64 @@
+﻿@model ContosoDemoNAV.Models.ProvisioningModel
+
+<fieldset>
+    <legend>Configure your application</legend>
+    <p>
+        Your instance of Microsoft Dynamics NAV is as good as you are comfortable working with it. Use the options below to make it your own.
+    </p>
+    <div class="form-group">
+        @Html.LabelFor(l => l.Features.LocalCurrencyCode, new { @class = "control-label col-sm-2" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(t => t.Features.LocalCurrencyCode, new { @class = "form-control" })
+            @Html.ValidationMessageFor(v => v.Features.LocalCurrencyCode, null, new { @class = "help-block" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(l => l.Features.VatRegistrationNumber, new { @class = "control-label col-sm-2" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(t => t.Features.VatRegistrationNumber, new { @class = "form-control" })
+            @Html.ValidationMessageFor(v => v.Features.VatRegistrationNumber, null, new { @class = "help-block" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(l => l.Features.CompanyAddress, new { @class = "control-label col-sm-2" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(t => t.Features.CompanyAddress, new { @class = "form-control" })
+            @Html.ValidationMessageFor(v => v.Features.CompanyAddress, null, new { @class = "help-block" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(l => l.Features.CompanyAddress2, new { @class = "control-label col-sm-2" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(t => t.Features.CompanyAddress2, new { @class = "form-control" })
+            @Html.ValidationMessageFor(v => v.Features.CompanyAddress2, null, new { @class = "help-block" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(l => l.Features.CompanyPostCode, new { @class = "control-label col-sm-2" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(t => t.Features.CompanyPostCode, new { @class = "form-control" })
+            @Html.ValidationMessageFor(v => v.Features.CompanyPostCode, null, new { @class = "help-block" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(l => l.Features.CompanyCity, new { @class = "control-label col-sm-2" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(t => t.Features.CompanyCity, new { @class = "form-control" })
+            @Html.ValidationMessageFor(v => v.Features.CompanyCity, null, new { @class = "help-block" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(l => l.Features.CompanyCountryCode, new { @class = "control-label col-sm-2" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(t => t.Features.CompanyCountryCode, new { @class = "form-control" })
+            @Html.ValidationMessageFor(v => v.Features.CompanyCountryCode, null, new { @class = "help-block" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(l => l.Features.RegisterTime, new { @class = "control-label col-sm-2" })
+        <div class="col-sm-10">
+            @Html.CheckBoxFor(t => t.Features.RegisterTime)
+        </div>
+    </div>
+</fieldset>
+

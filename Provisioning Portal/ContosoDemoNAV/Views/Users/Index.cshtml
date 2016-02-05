@@ -1,0 +1,54 @@
+﻿@model ContosoDemoNAV.Models.UserListModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts {
+    <script type="text/javascript">
+        $(function () {
+            var permissions = [];
+            function showFilteredPermissions(sets) {
+                $(".permissionsbox").empty();
+
+                sets && (permissions = sets);
+                $.each(permissions, function (i, set) {
+                    set.company === $("#company-filter").val() &&
+                        $(".permissionsbox").append("<div class='item'>" + set.permissionSet + "</div>");
+                });
+            };
+            $(".usersbox .user").click(function (e) {
+                $(".item.selected").removeClass("selected");
+                $(e.target).addClass("selected");
+                var url = "@Url.Action("GetPermissionSets", "Users")";
+                $.post(url, { userName: $(e.target).attr("user-name") }, function (response) {
+                    showFilteredPermissions(response.permissionSets);
+                });
+            });
+            $("#company-filter").change(function() { showFilteredPermissions(); });
+        });
+    </script>
+}
+
+<h2>Users for @Model.Tenant.TenantName</h2>
+<p>
+    <div class="users">
+        <div class="left">
+            <div class="caption">User accounts</div>
+            <div class="box usersbox">
+                @foreach (var user in Model.Users)
+                {
+                    <div class="item user@(user.Administrator ? " admin" : "")" user-name="@user.UserName">@user.FullName</div>
+                }
+            </div>
+        </div>
+        <div class="right">
+            <div class="caption">Permission sets <span class="filter">(filter by company: @Html.DropDownListFor(m => m.SelectedCompany, Model.Tenant.Companies.Select(c => new SelectListItem {Text = c, Value = c}), "", new {@id = "company-filter"}))</span></div>
+            <div class="box permissionsbox">
+            </div>
+        </div>
+    </div>
+    <input type="button" class="btn btn-info" onclick="window.location.href = '@Url.Action("New")';" value="New"/>
+    <input type="button" class="btn btn-danger" onclick="window.location.href = '@Url.Action("Delete")';" value="Delete" />
+</p>

@@ -1,0 +1,39 @@
+﻿@model ContosoDemoNAV.Models.ProvisioningModel
+
+<fieldset>
+    <legend>Basic Information</legend>
+    <p>
+        Please enter the basic information about your company. We will use this information to create your own Microsoft Dynamics NAV tenant.
+    </p>
+    <div class="form-group">
+        @Html.LabelFor(l => l.Tenant.CompanyName, new {@class = "control-label col-sm-2"})
+        <div class="col-sm-10">
+            @Html.TextBoxFor(t => t.Tenant.CompanyName, new {@class = "form-control", @id = "CompanyName"})
+            @Html.ValidationMessageFor(v => v.Tenant.CompanyName, null, new {@class = "help-block"})
+        </div>
+    </div>
+    <div class="form-group" id="tenantNameGroup">
+        @Html.LabelFor(l => l.Tenant.TenantName, new {@class = "control-label col-sm-2"})
+        <div class="col-sm-10">
+            @Html.TextBoxFor(t => t.Tenant.TenantName, new {@class = "form-control", @id = "TenantName"}) .ContosoNav.com
+            @Html.ValidationMessageFor(v => v.Tenant.TenantName, null, new {@class = "help-block"})
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(l => l.Tenant.Country, new {@class = "control-label col-sm-2"})
+        <div class="col-sm-10">
+            @Html.TextBoxFor(t => t.Tenant.Country, new {@class = "form-control"})
+            @Html.ValidationMessageFor(v => v.Tenant.Country, null, new {@class = "help-block"})
+        </div>
+    </div>
+</fieldset>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var $t = $("#TenantName");
+        var val = $t.val();
+        val && ($t.val(""), $t.removeData("previousValue"), setTimeout(function() {
+            $t.val(val);
+            $("form").validate().element("#TenantName");
+        }, 0));
+    });
+</script>

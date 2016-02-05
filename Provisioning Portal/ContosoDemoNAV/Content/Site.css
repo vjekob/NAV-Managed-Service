@@ -1,0 +1,134 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.jumbotron {
+    margin-bottom: 0;
+    background-image: url(img/jumbotron-bg.jpg);
+    -ms-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.form-control {
+    display: inline;
+}
+
+#TenantName::-ms-clear {
+    display: none;
+}
+
+.cd-pricing-header {
+  height: 80px;
+  pointer-events: none;
+}
+ 
+.cd-pricing-body {
+  overflow-x: auto;
+  /* smooth scrolling on touch devices */
+  -webkit-overflow-scrolling: touch;
+}
+ 
+.cd-pricing-footer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 80px;
+  width: 100%;
+}
+ 
+.cd-select {
+  display: block;
+  height: 100%;
+  /* hide button text on mobile */
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+  color: transparent;
+}
+
+.subtask {
+    padding-left: 18px;
+}
+
+.toptask {
+    padding-top: 8px;
+    font-weight: bold;
+}
+
+.taskstatus {
+    margin-right: 5px;
+}
+
+.users {
+    display: flex;
+    width: 100%;
+    height: 400px;
+}
+.users > .left, .users > .right {
+    flex: 1 1 auto;
+    align-self: stretch;
+}
+.users .box {
+    border: 1px solid gainsboro;
+    margin: 8px;
+    flex: 1 1 auto;
+    align-self: stretch;
+    height: 90%;
+    padding: 8px;
+    overflow-y: auto;
+}
+.users .caption {
+    font-weight: bold;
+}
+.users .filter {
+    font-weight: normal;
+    font-size: 0.8em;
+}
+.box .item {
+    background-color: whitesmoke;
+    padding: 8px;
+    margin-bottom: 8px;
+    vertical-align: middle;
+}
+.box .item.selected {
+    background-color: dodgerblue;
+    color: white;
+}
+.permissionsets {
+    border: 1px solid gainsboro;
+    height: 300px;
+    overflow-y: auto;
+    margin-bottom: 2em;
+}
+.permissionsets div {
+    margin: 6px;
+    background-color: whitesmoke;
+    padding: 8px;
+    display: inline-block;
+    width: 200px;
+}
+.permissionsets div.selected {
+    background-color: dodgerblue;
+    color: white;
+}

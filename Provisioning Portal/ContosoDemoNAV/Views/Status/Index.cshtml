@@ -1,0 +1,78 @@
+﻿@model ContosoDemoNAV.Models.StatusModel
+@{
+    ViewBag.Title = "Sign Up for Contoso Family Farming Cloud";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section scripts {
+    <script type="text/javascript">
+        $(function () {
+            var url = "@Url.Action("GetStatus")";
+            var interval = setInterval(checkStatus, 2500);
+
+            var $divStatus = $("#provisioning");
+
+            function checkStatus() {
+                $.post(url, function(status) {
+                    updateStatusHtml(status.Steps);
+
+                    var stopInterval = false;
+                    status.Status === -1 && (stopInterval = true, $("#tenantStatus").text(status.Error), $divStatus.css("display", "none"), $("#error").css("display", "block"));
+                    status.Status === 99 && (stopInterval = true, window.location.href = "@Model.Redirect");
+                    stopInterval && clearInterval(interval);
+                });
+            };
+
+            function updateStatusHtml(steps) {
+                $.each(steps, function(index, step) {
+                    var $step = $divStatus.find("#id_" + step.Ordinal);
+                    !$step.length ? createDiv(step) : updateDiv($step, step);
+                });
+            }
+
+            function findTopTask(step, $statuses) {
+                var $status = null;
+                $.each($statuses, function(index, status) {
+                    var ordinal = $(status).attr("ms-ordinal");
+                    if (step.Ordinal < parseInt(ordinal) && $status === null) $status = $(status);
+                });
+                return $status;
+            }
+
+            function createDiv(step) {
+                var div = '<div id="id_' + step.Ordinal + '" class="' + (step.HighLevelTask ? "toptask" : "subtask") + '" ms-status="0" ms-ordinal=""><img class="taskstatus" src="@Url.Content("~/Content/img/paused.png")" /><span>' + step.Description + '<span></div>';
+                var $statuses = $divStatus.find(".toptask");
+                if ($statuses.length) {
+                    var $status = findTopTask(step, $statuses);
+                    if ($status !== null) {
+                        $status.prepend(div);
+                    };
+                };
+                $divStatus.append(div);
+            }
+
+            function updateDiv($step, step) {
+                var $img = $step.find("img");
+                var src =
+                    $step.attr("ms-status") != step.Status
+                        ? (step.Status === 1
+                            ? "@Url.Content("~/Content/img/working_small.gif")"
+                            : (step.Status === 99
+                                ? "@Url.Content("~/Content/img/ok.png")"
+                                : null))
+                        : null;
+                src !== null && ($img.attr("src", src), $step.attr("ms-status", step.Status));
+            }
+
+            checkStatus();
+        });
+    </script>
+}
+
+<h2>@Model.Title</h2>
+<p>@Model.Description</p>
+<br/>
+<div id="provisioning"></div>
+<div id="error" style="display: none">
+    Something went wrong. Error description is:<br/>
+    <span id="tenantStatus"></span>
+</div>

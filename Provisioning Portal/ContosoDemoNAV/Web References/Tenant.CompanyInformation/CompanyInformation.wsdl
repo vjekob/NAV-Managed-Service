@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="urn:microsoft-dynamics-schemas/page/companyinformation" targetNamespace="urn:microsoft-dynamics-schemas/page/companyinformation" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/page/companyinformation" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:simpleType name="IC_Inbox_Type">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="File_Location" />
+          <xsd:enumeration value="Database" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Check_Avail_Time_Bucket">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Day" />
+          <xsd:enumeration value="Week" />
+          <xsd:enumeration value="Month" />
+          <xsd:enumeration value="Quarter" />
+          <xsd:enumeration value="Year" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="System_Indicator">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="None" />
+          <xsd:enumeration value="Custom_Text" />
+          <xsd:enumeration value="Company_Information" />
+          <xsd:enumeration value="Company" />
+          <xsd:enumeration value="Database" />
+          <xsd:enumeration value="Company_x002B_Database" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="System_Indicator_Style">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Standard" />
+          <xsd:enumeration value="Accent1" />
+          <xsd:enumeration value="Accent2" />
+          <xsd:enumeration value="Accent3" />
+          <xsd:enumeration value="Accent4" />
+          <xsd:enumeration value="Accent5" />
+          <xsd:enumeration value="Accent6" />
+          <xsd:enumeration value="Accent7" />
+          <xsd:enumeration value="Accent8" />
+          <xsd:enumeration value="Accent9" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="CompanyInformation">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="1" name="Key" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Name" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Address" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Address_2" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Post_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="City" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Country_Region_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Phone_No" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="VAT_Registration_No" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="GLN" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Industrial_Classification" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Fax_No" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="E_Mail" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Home_Page" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="IC_Partner_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="IC_Inbox_Type" type="tns:IC_Inbox_Type" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="IC_Inbox_Details" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Allow_Blank_Payment_Info" type="xsd:boolean" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Bank_Name" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Bank_Branch_No" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Bank_Account_No" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Payment_Routing_No" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Giro_No" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="SWIFT_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="IBAN" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Ship_to_Name" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Ship_to_Address" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Ship_to_Address_2" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Ship_to_Post_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Ship_to_City" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Ship_to_Country_Region_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Ship_to_Contact" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Location_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Responsibility_Center" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Check_Avail_Period_Calc" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Check_Avail_Time_Bucket" type="tns:Check_Avail_Time_Bucket" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Base_Calendar_Code" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Customized_Calendar" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="Cal_Convergence_Time_Frame" type="xsd:string" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="System_Indicator" type="tns:System_Indicator" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="System_Indicator_Style" type="tns:System_Indicator_Style" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="System_Indicator_Text" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CompanyInformation_List">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="CompanyInformation" type="tns:CompanyInformation" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="CompanyInformation_Fields">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Name" />
+          <xsd:enumeration value="Address" />
+          <xsd:enumeration value="Address_2" />
+          <xsd:enumeration value="Post_Code" />
+          <xsd:enumeration value="City" />
+          <xsd:enumeration value="Country_Region_Code" />
+          <xsd:enumeration value="Phone_No" />
+          <xsd:enumeration value="VAT_Registration_No" />
+          <xsd:enumeration value="GLN" />
+          <xsd:enumeration value="Industrial_Classification" />
+          <xsd:enumeration value="Fax_No" />
+          <xsd:enumeration value="E_Mail" />
+          <xsd:enumeration value="Home_Page" />
+          <xsd:enumeration value="IC_Partner_Code" />
+          <xsd:enumeration value="IC_Inbox_Type" />
+          <xsd:enumeration value="IC_Inbox_Details" />
+          <xsd:enumeration value="Allow_Blank_Payment_Info" />
+          <xsd:enumeration value="Bank_Name" />
+          <xsd:enumeration value="Bank_Branch_No" />
+          <xsd:enumeration value="Bank_Account_No" />
+          <xsd:enumeration value="Payment_Routing_No" />
+          <xsd:enumeration value="Giro_No" />
+          <xsd:enumeration value="SWIFT_Code" />
+          <xsd:enumeration value="IBAN" />
+          <xsd:enumeration value="Ship_to_Name" />
+          <xsd:enumeration value="Ship_to_Address" />
+          <xsd:enumeration value="Ship_to_Address_2" />
+          <xsd:enumeration value="Ship_to_Post_Code" />
+          <xsd:enumeration value="Ship_to_City" />
+          <xsd:enumeration value="Ship_to_Country_Region_Code" />
+          <xsd:enumeration value="Ship_to_Contact" />
+          <xsd:enumeration value="Location_Code" />
+          <xsd:enumeration value="Responsibility_Center" />
+          <xsd:enumeration value="Check_Avail_Period_Calc" />
+          <xsd:enumeration value="Check_Avail_Time_Bucket" />
+          <xsd:enumeration value="Base_Calendar_Code" />
+          <xsd:enumeration value="Customized_Calendar" />
+          <xsd:enumeration value="Cal_Convergence_Time_Frame" />
+          <xsd:enumeration value="System_Indicator" />
+          <xsd:enumeration value="System_Indicator_Style" />
+          <xsd:enumeration value="System_Indicator_Text" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="CompanyInformation_Filter">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="Field" type="tns:CompanyInformation_Fields" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="Criteria" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ReadByRecId">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="recId" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReadByRecId_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="CompanyInformation" type="tns:CompanyInformation" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReadMultiple">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="unbounded" name="filter" type="tns:CompanyInformation_Filter" />
+            <xsd:element minOccurs="0" maxOccurs="1" name="bookmarkKey" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="setSize" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ReadMultiple_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="ReadMultiple_Result" type="tns:CompanyInformation_List" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="IsUpdated">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="IsUpdated_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="IsUpdated_Result" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetRecIdFromKey">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="Key" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetRecIdFromKey_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="GetRecIdFromKey_Result" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Update">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="CompanyInformation" type="tns:CompanyInformation" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Update_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="CompanyInformation" type="tns:CompanyInformation" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UpdateMultiple">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="CompanyInformation_List" type="tns:CompanyInformation_List" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UpdateMultiple_Result">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="CompanyInformation_List" type="tns:CompanyInformation_List" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+  <message name="ReadByRecId">
+    <part name="parameters" element="tns:ReadByRecId" />
+  </message>
+  <message name="ReadByRecId_Result">
+    <part name="parameters" element="tns:ReadByRecId_Result" />
+  </message>
+  <message name="ReadMultiple">
+    <part name="parameters" element="tns:ReadMultiple" />
+  </message>
+  <message name="ReadMultiple_Result">
+    <part name="parameters" element="tns:ReadMultiple_Result" />
+  </message>
+  <message name="IsUpdated">
+    <part name="parameters" element="tns:IsUpdated" />
+  </message>
+  <message name="IsUpdated_Result">
+    <part name="parameters" element="tns:IsUpdated_Result" />
+  </message>
+  <message name="GetRecIdFromKey">
+    <part name="parameters" element="tns:GetRecIdFromKey" />
+  </message>
+  <message name="GetRecIdFromKey_Result">
+    <part name="parameters" element="tns:GetRecIdFromKey_Result" />
+  </message>
+  <message name="Update">
+    <part name="parameters" element="tns:Update" />
+  </message>
+  <message name="Update_Result">
+    <part name="parameters" element="tns:Update_Result" />
+  </message>
+  <message name="UpdateMultiple">
+    <part name="parameters" element="tns:UpdateMultiple" />
+  </message>
+  <message name="UpdateMultiple_Result">
+    <part name="parameters" element="tns:UpdateMultiple_Result" />
+  </message>
+  <portType name="CompanyInformation_Port">
+    <operation name="ReadByRecId">
+      <input name="ReadByRecId" message="tns:ReadByRecId" />
+      <output name="ReadByRecId_Result" message="tns:ReadByRecId_Result" />
+    </operation>
+    <operation name="ReadMultiple">
+      <input name="ReadMultiple" message="tns:ReadMultiple" />
+      <output name="ReadMultiple_Result" message="tns:ReadMultiple_Result" />
+    </operation>
+    <operation name="IsUpdated">
+      <input name="IsUpdated" message="tns:IsUpdated" />
+      <output name="IsUpdated_Result" message="tns:IsUpdated_Result" />
+    </operation>
+    <operation name="GetRecIdFromKey">
+      <input name="GetRecIdFromKey" message="tns:GetRecIdFromKey" />
+      <output name="GetRecIdFromKey_Result" message="tns:GetRecIdFromKey_Result" />
+    </operation>
+    <operation name="Update">
+      <input name="Update" message="tns:Update" />
+      <output name="Update_Result" message="tns:Update_Result" />
+    </operation>
+    <operation name="UpdateMultiple">
+      <input name="UpdateMultiple" message="tns:UpdateMultiple" />
+      <output name="UpdateMultiple_Result" message="tns:UpdateMultiple_Result" />
+    </operation>
+  </portType>
+  <binding name="CompanyInformation_Binding" type="tns:CompanyInformation_Port">
+    <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <operation name="ReadByRecId">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/companyinformation:ReadByRecId" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ReadByRecId">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ReadByRecId_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="ReadMultiple">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/companyinformation:ReadMultiple" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ReadMultiple">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ReadMultiple_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="IsUpdated">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/companyinformation:IsUpdated" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="IsUpdated">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="IsUpdated_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetRecIdFromKey">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/companyinformation:GetRecIdFromKey" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetRecIdFromKey">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetRecIdFromKey_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="Update">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/companyinformation:Update" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Update">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Update_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="UpdateMultiple">
+      <operation soapAction="urn:microsoft-dynamics-schemas/page/companyinformation:UpdateMultiple" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="UpdateMultiple">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="UpdateMultiple_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="CompanyInformation_Service">
+    <port name="CompanyInformation_Port" binding="tns:CompanyInformation_Binding">
+      <address location="https://demo01-ljdp16.navcloudapptest.net:7047/NAV/WS/CRONUS%20International%20Ltd./Page/CompanyInformation" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </port>
+  </service>
+</definitions>

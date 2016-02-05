@@ -1,0 +1,33 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ContosoDemoNAV.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ContosoDemoNAV_ApplicationTenant_ApplicationTenant_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://navmanagementportal.navcloudapptest.net:7047/NAV/WS/MVCompany/Page/ApplicationTenant?tenant=mvp</Value>
+    </Setting>
+    <Setting Name="ContosoDemoNAV_Operation_Operation" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://navmanagementportal.navcloudapptest.net:7047/NAV/WS/MVCompany/Codeunit/Operation?tenant=mvp</Value>
+    </Setting>
+    <Setting Name="ContosoDemoNAV_ApplicationTenantUser_ApplicationTenantUser_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://navmanagementportal.navcloudapptest.net:7047/NAV/WS/MVCompany/Page/ApplicationTenantUser?tenant=mvp</Value>
+    </Setting>
+    <Setting Name="ContosoDemoNAV_Tenant_CompanyInformation_CompanyInformation_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://demo01-ljdp16.navcloudapptest.net:7047/NAV/WS/CRONUS%20International%20Ltd./Page/CompanyInformation</Value>
+    </Setting>
+    <Setting Name="ContosoDemoNAV_ApplicationTenantCompany_ApplicationTenantCompany_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://autodep0117-main.navcloudapptest.net:7047/NAV/WS/Contoso/Page/ApplicationTenantCompany?tenant=partnertenant</Value>
+    </Setting>
+    <Setting Name="ContosoDemoNAV_Tenant_User_User_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://managementtenant-v19m56.navcloudapptest.net:7047/NAV/WS/CRONUS%20International%20Ltd./Page/User</Value>
+    </Setting>
+    <Setting Name="ContosoDemoNAV_Tenant_GLSetup_GLSetup_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://managementtenant-v19m56.navcloudapptest.net:7047/NAV/WS/CRONUS%20International%20Ltd./Page/GLSetup</Value>
+    </Setting>
+    <Setting Name="ContosoDemoNAV_Tenant_UserPermissionSet_UserPermissionSet_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://managementtenant-v19m56.navcloudapptest.net:7047/NAV/WS/CRONUS%20International%20Ltd./Page/UserPermissionSet</Value>
+    </Setting>
+    <Setting Name="ContosoDemoNAV_Tenant_PermissionSet_PermissionSet_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://managementtenant-v19m56.navcloudapptest.net:7047/NAV/WS/CRONUS%20International%20Ltd./Page/PermissionSet</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,29 @@
+﻿@model ContosoDemoNAV.Models.ProvisioningModel
+
+<fieldset>
+    <legend>Administrator User</legend>
+    <p>
+        Please enter the information about the user that will have administrative rights for the new Microsoft Dynamics NAV tenant. This user will also have full access to your Microsoft Dynamics NAV data and processes.
+    </p>
+    <div class="form-group">
+        @Html.LabelFor(l => l.User.UserName, new { @class = "control-label col-sm-2" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(t => t.User.UserName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(v => v.User.UserName, null, new { @class = "help-block" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(l => l.User.FullName, new { @class = "control-label col-sm-2" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(t => t.User.FullName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(v => v.User.FullName, null, new { @class = "help-block" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(l => l.User.ContactEmail, new { @class = "control-label col-sm-2" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(t => t.User.ContactEmail, new { @class = "form-control", @type = "email" })
+            @Html.ValidationMessageFor(v => v.User.ContactEmail, null, new { @class = "help-block" })
+        </div>
+    </div>
+</fieldset>
